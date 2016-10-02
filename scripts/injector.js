@@ -19,6 +19,14 @@ define(function () {
 				cached : cached
 			};
 
+			var factory = mode && (mode === 'factory');
+
+			if(factory) {
+				//  functions should always be cached
+				this.container[key].cached = true;
+				this.container[key].factory = true;
+			}
+
 		},
 
 		get : function (key, keychain) {
@@ -62,22 +70,29 @@ define(function () {
 
 		createInstance : function (config, keychain) {
 
-			var Constructor,
+			var Injectable,
 			    dependencies,
-			    constructorOptions = {};
+			    InjectableOptions = {};
 
-			Constructor = config.injectable;
+			Injectable = config.injectable;
 
-			dependencies = Constructor.inject || [];
-
+			dependencies = Injectable.inject || [];
 
 			dependencies.forEach(function (dependencyKey) {
 
-				constructorOptions[dependencyKey] = this.get(dependencyKey, keychain);
+				InjectableOptions[dependencyKey] = this.get(dependencyKey, keychain);
 
 			}, this);
 
-			return new Constructor(constructorOptions);
+			if(config.factory) {
+
+				return Injectable(InjectableOptions);
+
+			} else {
+
+				return new Injectable(InjectableOptions);
+
+			}
 
 		},
 

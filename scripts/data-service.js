@@ -9,6 +9,10 @@ define(function () {
 		getData : function () {
 
 			return 'here is your hello world data';
+		},
+
+		getTitle : function () {
+			return 'Dependency Injection Experiment';
 		}
 
 	};

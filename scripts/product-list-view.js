@@ -13,20 +13,17 @@ define([
 		initialize : function (options) {
 
 			this.dataService = options.dataService;
-			this.router = options.router;
+			this.fooView = options.fooView;
+			this.handleInternalLink = options.handleInternalLink;
 
 		},
 
-		events : {
-			'click [data-internal]' : 'handleInternalLink'
+		events :  {
+			'click [data-internal]' : 'clickOnInternalLink'
 		},
 
-		handleInternalLink : function (event) {
-
-			event.preventDefault();
-			var url = event.target.getAttribute('href');
-			this.router.navigate(url, { trigger : true });
-
+		clickOnInternalLink : function (event) {
+			this.handleInternalLink(event);
 		},
 
 		Template : _.template(document.getElementById('plp-template').innerHTML),
@@ -34,13 +31,13 @@ define([
 		render : function () {
 
 			this.el.innerHTML = this.Template({});
-
+			this.el.querySelector('#foo-placeholder').appendChild(this.fooView.render().el);
 			return this;
 
 		}
 	});
 
-	ProductListView.inject = ['dataService', 'router'];
+	ProductListView.inject = ['dataService', 'fooView', 'handleInternalLink'];
 
 	return ProductListView;
 
