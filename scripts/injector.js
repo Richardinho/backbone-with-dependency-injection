@@ -21,11 +21,27 @@ define(function () {
 
 		},
 
-		get : function (key) {
+		get : function (key, keychain) {
 
 			var injectableConfig = this.container[key],
 			    instance,
 			    injectable;
+
+			keychain = (keychain || []).slice();
+
+			if(keychain.indexOf(key) != -1) {
+
+				throw Error('cyclical dependency detected for key: ' + key + ' in keychain ' + keychain);
+
+			} else {
+
+				keychain.unshift(key);
+
+			}
+
+			if(!injectableConfig) {
+				throw Error('non existent injectable: ' + key);
+			}
 
 			injectable = injectableConfig.injectable;
 
@@ -33,18 +49,18 @@ define(function () {
 				if(injectableConfig.cachedInstance) {
 					return injectableConfig.cachedInstance;
 				} else {
-					instance = this.createInstance(injectableConfig);
+					instance = this.createInstance(injectableConfig, keychain);
 					injectableConfig.cachedInstance = instance;
 				}
 			} else {
-				instance = this.createInstance(injectableConfig);
+				instance = this.createInstance(injectableConfig, keychain);
 			}
 
 			return instance;
 
 		},
 
-		createInstance : function (config) {
+		createInstance : function (config, keychain) {
 
 			var Constructor,
 			    dependencies,
@@ -57,7 +73,7 @@ define(function () {
 
 			dependencies.forEach(function (dependencyKey) {
 
-				constructorOptions[dependencyKey] = this.get(dependencyKey);
+				constructorOptions[dependencyKey] = this.get(dependencyKey, keychain);
 
 			}, this);
 
