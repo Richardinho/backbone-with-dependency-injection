@@ -14,14 +14,6 @@ define(function () {
 	Injector.VALUE = 4;
 
 
-	function isObject(obj) {
-		return Object.prototype.toString.call(obj) === '[object Object]';
-	}
-
-	function isString(str) {
-		return typeof str === 'string' || str instanceof String;
-	}
-
 	Injector.prototype = {
 
 		/**
