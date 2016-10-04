@@ -19,14 +19,13 @@ define(['scripts/injector'], function(Injector) {
 			beforeEach(function () {
 				key = 'foo';
 				injectable = function Foo() {};
-				mode = 'cached';
-				injector.register(key, injectable, mode);
+				injector.register(key, injectable, Injector.INSTANCE);
 			});
 
 			it('should should store injectables in container', function() {
 				expect(injector.container[key]).toEqual({
 					injectable : injectable,
-					cached : true
+					mode : Injector.INSTANCE
 				});
 			});
 		});
@@ -52,7 +51,7 @@ define(['scripts/injector'], function(Injector) {
 
 					config = {
 							injectable : Injectable,
-							cached : false
+							mode : Injector.INSTANCE
 					};
 
 					//  when
@@ -73,8 +72,7 @@ define(['scripts/injector'], function(Injector) {
 
 					config = {
 							injectable : Injectable,
-							cached : false,
-							factory : true
+							mode : Injector.FACTORY_FUNCTION
 					};
 
 					//  when
@@ -118,7 +116,7 @@ define(['scripts/injector'], function(Injector) {
 
 									config = {
 											injectable : Injectable,
-											cached : false
+											mode : Injector.INSTANCE
 									};
 
 									//  when
@@ -142,9 +140,8 @@ define(['scripts/injector'], function(Injector) {
 									Injectable.inject = ['apple', 'banana'];
 
 									config = {
-											injectable : Injectable,
-											cached : false,
-											factory : true
+										injectable : Injectable,
+										mode : Injector.FACTORY_FUNCTION
 									};
 
 									//  when
@@ -184,7 +181,7 @@ define(['scripts/injector'], function(Injector) {
 
 					InjectableConfig = {
 						injectable : Injectable,
-						cached : false
+						mode : Injector.INSTANCE
 					};
 
 					injector.container[key] = InjectableConfig;
@@ -218,7 +215,7 @@ define(['scripts/injector'], function(Injector) {
 
 					InjectableConfig = {
 						injectable : Injectable,
-						cached : true
+						mode : Injector.CACHE_INSTANCE
 					};
 
 					injector.container[key] = InjectableConfig;
@@ -263,7 +260,7 @@ define(['scripts/injector'], function(Injector) {
 
 					InjectableConfig = {
 						injectable : Injectable,
-						cached : false
+						mode : Injector.INSTANCE
 					};
 
 					injector.container[key] = InjectableConfig;

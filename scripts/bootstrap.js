@@ -33,16 +33,16 @@ define([
 
 		var injector = new Injector();
 
-		injector.register('productListView',   ProductListView                );
-		injector.register('productDetailView', ProductDetailView              );
-		injector.register('plpController',     PlpController                  );
-		injector.register('pdpController',     PdpController                  );
-		injector.register('dataService',       DataService,          'cached' );
-		injector.register('router',            Router,               'cached' );
-		injector.register('pageManager',       PageManager,          'cached' );
-		injector.register('app',               App                            );
-		injector.register('fooView',           FooView                        );
-		injector.register('handleInternalLink',handleInternalLink , 'function');
+		injector.register('productListView',    ProductListView ,     Injector.INSTANCE           );
+		injector.register('productDetailView',  ProductDetailView,    Injector.INSTANCE           );
+		injector.register('plpController',      PlpController  ,      Injector.INSTANCE           );
+		injector.register('pdpController',      PdpController ,       Injector.INSTANCE           );
+		injector.register('dataService',        DataService,          Injector.CACHE_INSTANCE     );
+		injector.register('router',             Router,               Injector.CACHE_INSTANCE     );
+		injector.register('pageManager',        PageManager,          Injector.CACHE_INSTANCE     );
+		injector.register('app',                App    ,              Injector.INSTANCE           );
+		injector.register('fooView',            FooView ,             Injector.INSTANCE           );
+		injector.register('handleInternalLink', handleInternalLink ,  Injector.FACTORY_FUNCTION   );
 
 		injector.start('app', function (app) {
 

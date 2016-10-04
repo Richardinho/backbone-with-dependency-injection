@@ -34,9 +34,9 @@ define(['scripts/injector'], function(Injector) {
 
 			App.inject = ['bar'];
 
-			injector.register('app', App);
-			injector.register('bar', Bar);
-			injector.register('bix', Bix);
+			injector.register('app', App, Injector.INSTANCE);
+			injector.register('bar', Bar, Injector.CACHE_INSTANCE);
+			injector.register('bix', Bix, Injector.INSTANCE);
 			injector.start('app', function (app) {
 				app.start();
 			});

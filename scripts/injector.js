@@ -8,27 +8,41 @@ define(function () {
 
 	}
 
+	Injector.INSTANCE = 1;
+	Injector.CACHE_INSTANCE = 2;
+	Injector.FACTORY_FUNCTION = 3;
+	Injector.VALUE = 4;
+
+
+	function isObject(obj) {
+		return Object.prototype.toString.call(obj) === '[object Object]';
+	}
+
+	function isString(str) {
+		return typeof str === 'string' || str instanceof String;
+	}
+
 	Injector.prototype = {
 
+		/**
+		*
+		*  mode can either be a string or an object
+		*
+		*
+		*/
 		register : function (key, injectable, mode) {
-
-			var cached = mode && (mode === 'cached');
 
 			this.container[key] = {
 				injectable : injectable,
-				cached : cached
+				mode : mode || Injector.INSTANCE
 			};
-
-			var factory = mode && (mode === 'factory');
-
-			if(factory) {
-				//  functions should always be cached
-				this.container[key].cached = true;
-				this.container[key].factory = true;
-			}
-
 		},
 
+		/**
+		*
+		*
+		*
+		*/
 		get : function (key, keychain) {
 
 			var injectableConfig = this.container[key],
@@ -53,7 +67,7 @@ define(function () {
 
 			injectable = injectableConfig.injectable;
 
-			if(injectableConfig.cached ) {
+			if(injectableConfig.mode === Injector.CACHE_INSTANCE) {
 				if(injectableConfig.cachedInstance) {
 					return injectableConfig.cachedInstance;
 				} else {
@@ -72,7 +86,8 @@ define(function () {
 
 			var Injectable,
 			    dependencies,
-			    InjectableOptions = {};
+			    InjectableOptions = {},
+			    result;
 
 			Injectable = config.injectable;
 
@@ -84,15 +99,20 @@ define(function () {
 
 			}, this);
 
-			if(config.factory) {
-
-				return Injectable(InjectableOptions);
-
-			} else {
-
-				return new Injectable(InjectableOptions);
-
+			switch(config.mode) {
+			case Injector.INSTANCE:
+			case Injector.CACHE_INSTANCE:
+				result = new Injectable(InjectableOptions);
+				break;
+			case Injector.FACTORY_FUNCTION:
+				result = Injectable(InjectableOptions);
+				break;
+			case Injector.VALUE:
+				result = Injectable;
+				break;
 			}
+
+			return result;
 
 		},
 
