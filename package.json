@@ -4,8 +4,7 @@
   "description": "",
   "main": "lib/injector.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "karma": "karma start"
+    "test": "karma start"
   },
   "keywords": [],
   "author": "",
