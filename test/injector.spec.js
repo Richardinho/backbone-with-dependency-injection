@@ -38,8 +38,8 @@ define(['scripts/injector'], function(Injector) {
 		describe('createInstance()', function () {
 
 			var config,
-					instance,
-					keychain = [];
+			    instance,
+			    keychain = [];
 
 			describe('when Injectable is a constructor', function () {
 
@@ -50,8 +50,8 @@ define(['scripts/injector'], function(Injector) {
 					function Injectable () { this.bar = 'bar' };
 
 					config = {
-							injectable : Injectable,
-							mode : Injector.INSTANCE
+						injectable : Injectable,
+						mode : Injector.INSTANCE
 					};
 
 					//  when
@@ -71,8 +71,8 @@ define(['scripts/injector'], function(Injector) {
 					function Injectable () { return 'bar' };
 
 					config = {
-							injectable : Injectable,
-							mode : Injector.FACTORY_FUNCTION
+						injectable : Injectable,
+						mode : Injector.FACTORY_FUNCTION
 					};
 
 					//  when
@@ -84,77 +84,98 @@ define(['scripts/injector'], function(Injector) {
 				});
 			});
 
+			describe('when Injectable is a value', function () {
+
+				beforeEach(function () {
+
+					//  Given
+					Injectable = 'this is my value';
+
+					config = {
+						injectable : Injectable,
+						mode : Injector.VALUE
+					};
+
+					//  when
+					instance = injector.createInstance(config, keychain);
+				});
+
+				it('should return value', function () {
+					expect(instance).toBe('this is my value');
+				});
+			});
+
 			describe('when Injectable has dependencies', function () {
 
-					var apple, banana;
+				var apple, banana;
+
+				beforeEach(function () {
+
+					apple = function () { this.name = 'apple'; };
+					banana = function () { this.name = 'banana'; };
+
+					injector.register('apple', apple);
+					injector.register('banana', banana);
+
+				});
+
+				describe('when Injectable is a constructor', function () {
 
 					beforeEach(function () {
 
-							apple = function () { this.name = 'apple'; };
-							banana = function () { this.name = 'banana'; };
+						//  Given
 
-							injector.register('apple', apple);
-							injector.register('banana', banana);
+						apple = function () { this.name = 'apple'; };
+						banana = function () { this.name = 'banana'; };
 
+						injector.register('apple', apple);
+						injector.register('banana', banana);
+
+						function Injectable (options) { this.options = options; };
+
+						Injectable.inject = ['apple', 'banana'];
+
+						config = {
+								injectable : Injectable,
+								mode : Injector.INSTANCE
+						};
+
+						//  when
+						instance = injector.createInstance(config, keychain);
 					});
 
-					describe('when Injectable is a constructor', function () {
+					it('should return instance with injected dependencies', function () {
+						expect(instance.options.apple.name).toBe('apple');
+						expect(instance.options.banana.name).toBe('banana');
+					});
+				});
 
-							beforeEach(function () {
+				describe('when Injectable is a factory function', function () {
 
-									//  Given
+					beforeEach(function () {
 
-									apple = function () { this.name = 'apple'; };
-									banana = function () { this.name = 'banana'; };
+						//  Given
 
-									injector.register('apple', apple);
-									injector.register('banana', banana);
+						function Injectable (options) { return options; };
 
-									function Injectable (options) { this.options = options; };
+						Injectable.inject = ['apple', 'banana'];
 
-									Injectable.inject = ['apple', 'banana'];
+						config = {
+							injectable : Injectable,
+							mode : Injector.FACTORY_FUNCTION
+						};
 
-									config = {
-											injectable : Injectable,
-											mode : Injector.INSTANCE
-									};
-
-									//  when
-									instance = injector.createInstance(config, keychain);
-							});
-
-							it('should return instance with injected dependencies', function () {
-									expect(instance.options.apple.name).toBe('apple');
-									expect(instance.options.banana.name).toBe('banana');
-							});
+						//  when
+						instance = injector.createInstance(config, keychain);
 					});
 
-					describe('when Injectable is a factory function', function () {
-
-							beforeEach(function () {
-
-									//  Given
-
-									function Injectable (options) { return options; };
-
-									Injectable.inject = ['apple', 'banana'];
-
-									config = {
-										injectable : Injectable,
-										mode : Injector.FACTORY_FUNCTION
-									};
-
-									//  when
-									instance = injector.createInstance(config, keychain);
-							});
-
-							it('should return result of calling factory function and passing dependencies', function () {
-									expect(instance.apple.name).toBe('apple');
-									expect(instance.banana.name).toBe('banana');
-							});
-					});
-
+					it('should return result of calling factory function and passing dependencies', function () {
+							expect(instance.apple.name).toBe('apple');
+							expect(instance.banana.name).toBe('banana');
+						});
+				});
 			});
+
 		});
 
 		/******************************************************************
@@ -164,11 +185,11 @@ define(['scripts/injector'], function(Injector) {
 
 		describe('get()', function () {
 			var key,
-					keychain,
-					Injectable,
-					instance,
-					spyOnCreateInstance,
-					InjectableConfig;
+			    keychain,
+			    Injectable,
+			    instance,
+			    spyOnCreateInstance,
+			    InjectableConfig;
 
 			describe('non cached', function () {
 
@@ -197,8 +218,6 @@ define(['scripts/injector'], function(Injector) {
 				});
 			});
 
-
-
 			/******************************************************************
 			***********  cached()  ********************************************
 			*******************************************************************/
@@ -217,13 +236,13 @@ define(['scripts/injector'], function(Injector) {
 						injectable : Injectable,
 						mode : Injector.CACHE_INSTANCE
 					};
-
 					injector.container[key] = InjectableConfig;
-
 				});
 
 				describe('when instance is in cache', function () {
+
 					var cachedInstance;
+
 					beforeEach(function () {
 						cachedInstance = { name : 'cachedInstance'};
 						injector.container[key].cachedInstance = cachedInstance;
@@ -253,6 +272,7 @@ define(['scripts/injector'], function(Injector) {
 
 			describe('when called with circular dependency', function () {
 				beforeEach(function () {
+
 					key = 'foo';
 					keychain = ['bar', 'moo', key];
 
