@@ -25,7 +25,8 @@ define(['lib/injector'], function(Injector) {
 			it('should should store injectables in container', function() {
 				expect(injector.container[key]).toEqual({
 					injectable : injectable,
-					mode : Injector.INSTANCE
+					mode : Injector.INSTANCE,
+					locals : []
 				});
 			});
 		});
