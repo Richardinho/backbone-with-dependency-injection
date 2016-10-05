@@ -1,4 +1,4 @@
-define(['scripts/injector'], function(Injector) {
+define(['lib/injector'], function(Injector) {
 
 	describe('injector acceptance test', function() {
 
