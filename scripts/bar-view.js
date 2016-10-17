@@ -22,12 +22,12 @@ define([
 			this.handleInternalLink(event);
 		},
 
-		template : _.template(document.getElementById('foo-template').innerHTML),
+		template : _.template(document.getElementById('bar-template').innerHTML),
 
 		render : function () {
 			this.el.innerHTML = this.template({
 				title : this.dataService.title,
-				foo : this.dataService.foo
+				bar : this.dataService.bar
 			});
 			return this;
 		}

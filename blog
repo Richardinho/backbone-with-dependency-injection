@@ -1,0 +1,33 @@
+Dependency Injection is a mechanism for creating objects in a software application.
+
+Software applications are composed of objects. Objects interact with other objects and a reference to another object within an object is called a 'dependency'. Since these objects themselves can contain references to other objects it is possible to represent the relationship between objects as a 'tree'.
+
+
+ A major part of an application is to build this tree of dependencies. A mechanism is therefore required for instantiating objects and linking them together.
+
+Without Dependency Injection, or DI as its commonly called, there are a couple of strategies for object creation and both of these have their difficulties.
+
+The first strategy is for objects to be responsible for creating their own direct dependencies. That is, an object is created by calling its constructor functions and within that function  its dependencies are created in the same way.
+
+The advantages of this approach are that it doesn't require any additional libraries to implement and since objects are self contained any change to an object can be done in one place.
+
+ It doesn't scale well however.
+
+As the app grows your objects are all cluttered up with a lot of object creation code. Secondly your objects become hard to test because it is hard if not impossible to swap out your hard coded dependencies for mock implementations.
+Another problem is that it becomes more difficult to share objects in your application. An object can pass another object to its dependencies but it is not as easy to  pass it up to its owner object or across to other parts of the application. In order to communicate between parts of the application, strategies, such as message passing through a publish subscribe mechanism, become necessary.
+
+An approach which addresses these problems is to instantiate objects outside of the objects that own them and pass them in, normally on instantiation through the constructor function.
+
+Thus objects become decoupled from the implementation of their dependencies. The consequence of this is that any object
+which implements the same methods and properties can stand in for a depenendency. This is useful in testing where you might want to create mock objects.
+
+This suffers from the propagating dependency anti-pattern where an object has a reference to an object only so as to pass it on to another object. As well as having to change the code in multiple places whenever you want to add or remove an object it also results in constructor functions having large numbers of parameters.
+
+
+Dependency Injection is a better solution which takes the best parts of the two preceding solutions and fixes their shortcomings.
+DI consists of a container in which all the apps objects are stored. In the bootstrapping script all the objects are registered with the container.
+An object declares its dependencies using annotations. the DI process reads these annotations and uses them to wire the objects together.
+
+. The heavy lifting of instantiating objects is taken care of by the di container and objects only know about the objects that they actually use. Apart from the annotations no additional code is necessary within our objects themselves which means that in our tests we can manually instantiate our objects and pass in whatever mocks we want for the objects dependencies.
+
+

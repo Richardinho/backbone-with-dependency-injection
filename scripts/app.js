@@ -4,17 +4,11 @@ define(['backbone'], function (Backbone) {
 
 	var App = function(options) {
 
-
 		this.router = options.router;
-		this.plpController = options.plpController;
-		this.pdpController = options.pdpController;
+		this.createController = options.createController;
 
-
-		this.router.route('',        'product-list-page',   this.plpController.handleRequest.bind(this.plpController));
-		this.router.route('product', 'product-detail-page', this.pdpController.handleRequest.bind(this.pdpController));
-
-
-
+		this.router.route('',     'foo',                 this.createController('fooController'));
+		this.router.route('bar',  'bar',                 this.createController('barController'));
 
 	}
 
@@ -22,13 +16,12 @@ define(['backbone'], function (Backbone) {
 
 		start : function () {
 
-			console.log('starting app');
 			Backbone.history.start();
 		}
 
 	};
 
-	App.inject = ['router', 'plpController', 'pdpController'];
+	App.inject = ['router', 'createController'];
 
 	return App;
 

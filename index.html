@@ -9,26 +9,16 @@
 
 <div id='app'></div>
 
-<script id='plp-template' type='text/template'>
-
-	<h2>This is the product list page</h2>
-	<div id='foo-placeholder'></div>
-
-
-</script>
-
-<script id='pdp-template' type='text/template'>
-
-	<h2>This is the product detail page</h2>
-
-	<a href='' data-internal>product list page</a>
-
-</script>
-
 <script id='foo-template' type='text/template'>
-
 	<h1>Hello Foo<%= title %></h1>
-	<a href='product' data-internal>product detail page</a>
+	<a href='bar' data-internal>go to bar</a>
+	<p><%= foo %></p>
+</script>
+
+<script id='bar-template' type='text/template'>
+	<h1>This is Bar</h1>
+	<a href='' data-internal>go to foo</a>
+	<p><%= bar %></p>
 </script>
 
 </body>
