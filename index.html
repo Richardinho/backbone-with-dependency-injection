@@ -3,6 +3,17 @@
 <head>
 	<meta charset="UTF-8">
 	<title></title>
+	<style>
+		.foo, .bar {
+			padding : 10px;
+		}
+		.foo {
+			background : lightblue;
+		}
+		.bar {
+			background : pink;
+		}
+	</style>
 	<script data-main="scripts/main" src="/node_modules/requirejs/require.js"></script>
 </head>
 <body>
@@ -10,15 +21,19 @@
 <div id='app'></div>
 
 <script id='foo-template' type='text/template'>
-	<h1>Hello Foo<%= title %></h1>
-	<a href='bar' data-internal>go to bar</a>
-	<p><%= foo %></p>
+	<div class='foo'>
+		<h1>Hello Foo<%= title %></h1>
+		<a href='bar' data-internal>go to bar</a>
+		<p><%= foo %></p>
+	</div>
 </script>
 
 <script id='bar-template' type='text/template'>
-	<h1>This is Bar</h1>
-	<a href='' data-internal>go to foo</a>
-	<p><%= bar %></p>
+	<div class='bar'>
+		<h1>This is Bar</h1>
+		<a href='' data-internal>go to foo</a>
+		<p><%= bar %></p>
+	</div>
 </script>
 
 </body>
