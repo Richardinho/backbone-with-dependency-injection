@@ -23,7 +23,7 @@ define(function () {
 					resolve({});
 
 
-				}, 1000);
+				}, 0);
 			});
 		}
 
