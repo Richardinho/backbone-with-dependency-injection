@@ -21,25 +21,26 @@ Import constructor function and use to create an instance of the injector.
 Dependency injection operates on POJSO (Plain Ol' Javascript Objects). Define constructor functions as normal, passing in dependencies through function parameters.
 ```
     let Dep1 = function () {
-    
+
         this.name = 'I am dep1';
     }
-    
+
     let Dep2 = function () {
-    
+
         this.name = 'I am dep2';
     }
-    
+
     let Foo = function (options) {
         this.dep1 = options.dep1;
         this.dep2 = options.dep2;
     }
+    Foo.inject = ['dep1', 'dep2'];
 ```
 Tell the injector about these objects using the `register()` function. The first argument is the 'token' by which we refer to this dependency. The second argument is the 'service provider' which is an object that teaches the injector how to create an object. In this case, the service provider is the constructor function. The third argument is a constant which gives additional information to the injector as to how to create a dependency. Injector.INSTANCE tells the injector to create a new instance of the object every time a client object asks for it. Other constants are described below in the API section.
 ```
-    injector.register('dep1', Dep1, Injector.INSTANCE );
-    injector.register('dep2', Dep2, Injector.INSTANCE );
-    injector.register('foo',  Foo,  Injector.INSTANCE );
+    injector.register('dep1', Dep1, Diogenes.INSTANCE );
+    injector.register('dep2', Dep2, Diogenes.INSTANCE );
+    injector.register('foo',  Foo,  Diogenes.INSTANCE );
 ```
 
 An object declares its dependencies using annotations. In DI systems, annotations can take many different forms. In Diogenes, they consist of an  array of string tokens. Note that these tokens correspond to the token used to register the service provider with the injector, as shown in the above example. This array is assigned to the static `inject` property of the constructor function.
@@ -54,9 +55,7 @@ The last step is to bootstrap the DI system. This is done using the `start()` me
 
 ```
     injector.start('foo', function (foo) {
-
-        console.log(foo.deb1.name, foo.deb2.name);
-
+        console.log(foo.dep1.name, foo.dep2.name);
     });
 ```
 ### API
