@@ -10,6 +10,10 @@ I have written more generally on the subject of [dependency injection](http://bl
 
 I have also created a small [demo app](https://richardinho.github.io/Diogenes) which uses DIogenes in order to show it working as part of an application. The code for this app is within the repository.
 
+
+#### note on terminology
+In the context of dependency injection, an object taking the role of a dependency being injected into another object is known as a 'service'. The object receiving the service is known as the 'client'. Within the DI system objects take the role of both service and client according to whether they are being injected or being injected into.
+
 ### Installation
 Use npm to pull package down from NPM.
 ```
@@ -17,8 +21,6 @@ Use npm to pull package down from NPM.
 ```
 
 
-#### note on terminology
-In the context of dependency injection, an object taking the role of a dependency being injected into another object is known as a 'service'. The object receiving the service is known as the 'client'. Within the DI system objects take the role of both service and client according to whether they are being injected or being injected into.
 
 ### Tutorial
 
