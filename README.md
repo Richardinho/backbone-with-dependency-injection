@@ -60,33 +60,33 @@ The last step is to bootstrap the DI system. This is done using the `start()` me
         console.log(foo.dep1.name, foo.dep2.name);
     });
 ```
-### API
+## API
 
-#### constants
+### constants
 
 These are passed to the `register()` method to give instructions to the injector as to how to create objects.
 
-##### Diogenes.INSTANCE
+#### Diogenes.INSTANCE
 
 Specifies that the injector should return a new instance of the service provider on every request.
 The service provider must be a constructor function.
 
-##### Diogenes.CACHE_INSTANCE
+#### Diogenes.CACHE_INSTANCE
 
 Specifies that the injector should return the same instance of the service provider on every request.
 The service provider must be a constructor function.
 
-##### Diogenes.FACTORY_FUNCTION
+#### Diogenes.FACTORY_FUNCTION
 Specifies that the injector should return the result of calling the service provider on every request.
 The service provider must be a function.
 
-##### Diogenes.VALUE
+#### Diogenes.VALUE
 Specifies that the injector should return the service provider on every request
 The service provider can be any type of javascript function, object, or primitive.
 
-#### instance methods
+### instance methods
 
-##### register(token, serviceProvider, mode, locals)
+#### register(token, serviceProvider, mode, locals)
 
 token: string identifier for the dependency
 
@@ -96,13 +96,13 @@ mode: constant(see above) which provides additional info to the injector on how 
 
 locals: additional optional arguments that can be passed to the service provider. When the service worker is called these locals will be the second argument passed.
 
-##### has(token)
+#### has(token)
 returns true if provider identified by token has been registered with the injector.
     
-##### get(token)
+#### get(token)
 returns instance of object identified by token
     
-##### start(token, callback)
+#### start(token, callback)
 Bootstrapping method.
 
 token: identifies root object of dependency tree.
