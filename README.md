@@ -89,15 +89,22 @@ register a service provider with the injector. Optionally provide arguments to b
 - `locals` - additional optional arguments that can be passed to the service provider. When the service worker is called these locals will be the second argument passed.
 
 
-#### has(token)
+## has(token)
+
 returns true if provider identified by token has been registered with the injector.
+
+- `token` - string identifier for the dependency
     
-#### get(token)
+## get(token)
+
 returns instance of object identified by token
+
+- `token` - string identifier for the dependency
     
-#### start(token, callback)
+## start(token, callback)
+
 Bootstrapping method.
 
-token: identifies root object of dependency tree.
-callback: called once dependency tree has been created. Is passed an instance of the root object.
+- `token` - string identifier for the root object of dependency tree
+- `callback` - called once dependency tree has been created. Is passed an instance of the root object.
 
