@@ -86,19 +86,19 @@ The service provider can be any type of javascript function, object, or primitiv
 
 ##### register(token, serviceProvider, mode, locals)
 
-    token: string identifier for the dependency 
-    serviceProvider: object that teaches injector how to create the instance. Varies depending on the mode (see constants above).
-    mode: constant(see above) which provides additional info to the injector on how to create the dependency.
-    locals: additional optional arguments that can be passed to the service provider.
-    
+token: string identifier for the dependency
+serviceProvider: object that teaches injector how to create the instance. Varies depending on the mode (see constants above).
+mode: constant(see above) which provides additional info to the injector on how to create the dependency.
+locals: additional optional arguments that can be passed to the service provider.
+
 ##### has(token)
-    returns true if provider identified by token has been registered with the injector.
+returns true if provider identified by token has been registered with the injector.
     
 ##### get(token)
-    returns instance of object identified by token
+returns instance of object identified by token
     
 ##### start(token, callback)
-    Bootstrapping method. 
-    token: identifies root object of dependency tree.
-    callback: called once dependency tree has been created. Is passed an instance of the root object.
+Bootstrapping method.
+token: identifies root object of dependency tree.
+callback: called once dependency tree has been created. Is passed an instance of the root object.
 
