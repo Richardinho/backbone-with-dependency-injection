@@ -65,6 +65,7 @@ The last step is to bootstrap the DI system. This is done using the `start()` me
 ## API
 
 ### constants
+These are passed to the `register()` method to give instructions to the injector as to how to create objects.
 
 | Name                        | Purpose                                         |
 |-----------------------------|-------------------------------------------------|
@@ -75,7 +76,6 @@ The last step is to bootstrap the DI system. This is done using the `start()` me
 
 
 
-These are passed to the `register()` method to give instructions to the injector as to how to create objects.
 
 #### Diogenes.INSTANCE
 
