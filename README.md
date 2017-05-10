@@ -64,6 +64,8 @@ The last step is to bootstrap the DI system. This is done using the `start()` me
 ```
 ## API
 
+### constants
+
 | Name                        | Purpose                                         |
 |-----------------------------|-------------------------------------------------|
 | `Diogenes.INSTANCE`         | Specifies that the injector should return a new instance of the service provider on every request. The service provider must be a constructor function.|
@@ -71,7 +73,7 @@ The last step is to bootstrap the DI system. This is done using the `start()` me
 | `Diogenes.FACTORY_FUNCTION` | Specifies that the injector should return the result of calling the service provider on every request.The service provider must be a function. |
 | `Diogenes.VALUE`            | Specifies that the injector should return the service provider on every request. The service provider can be any type of javascript function, object, or primitive. |
 
-### constants
+
 
 These are passed to the `register()` method to give instructions to the injector as to how to create objects.
 
