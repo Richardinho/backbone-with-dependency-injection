@@ -7,7 +7,7 @@ Dependency injection is a way of creating objects within a Javascript applicatio
 
 I have written more generally on the subject of [dependency injection](http://blog.richardhunter.co.uk/index.php/9) on my blog.
 
-I have also created a small [demo app](https://richardinho.github.io/Diogenes) which uses DIogenes in a single page app along with BackboneJS, in order to show it working as part of an application.
+I have also created a small [demo app](https://richardinho.github.io/Diogenes) which uses DIogenes in a single page app along with BackboneJS, in order to show it working as part of an application. The code for this app is within the repository.
 
 ### Installation
 Use npm to pull package down from NPM.
