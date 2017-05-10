@@ -3,11 +3,12 @@
 A Dependency Injection library for Javascript.
 
 ### introduction
-Dependency injection is a way of creating objects within a Javascript application that helps to make code cleaner, and facilitates testing by decoupling objects from the implementation of their dependencies.
+Dependency injection is a way of creating objects within a Javascript application.
+ its advantages are that it helps to reduce object creation code boilerplate, making clode cleaner, and facilitates testing by decoupling objects from their implementation.
 
 I have written more generally on the subject of [dependency injection](http://blog.richardhunter.co.uk/index.php/9) on my blog.
 
-I have also created a small [demo app](https://richardinho.github.io/Diogenes) which uses DIogenes in a single page app along with BackboneJS, in order to show it working as part of an application. The code for this app is within the repository.
+I have also created a small [demo app](https://richardinho.github.io/Diogenes) which uses DIogenes in order to show it working as part of an application. The code for this app is within the repository.
 
 ### Installation
 Use npm to pull package down from NPM.
@@ -15,9 +16,14 @@ Use npm to pull package down from NPM.
     npm install --save Diogenes
 ```
 
+
+#### note on terminology
+In the context of dependency injection, an object taking the role of a dependency being injected into another object is known as a 'service'. The object receiving the service is known as the 'client'. Within the DI system objects take the role of both service and client according to whether they are being injected or being injected into.
+
 ### Tutorial
 
-Import constructor function and use to create an instance of the injector.
+
+Begin by importing the constructor function and using that to create an instance of the injector.
 ```
     let Diogenes = require('Diogenes');
     let injector = new Diogenes();
@@ -40,7 +46,14 @@ Dependency injection operates on POJSO (Plain Ol' Javascript Objects). Define co
     }
     Foo.inject = ['dep1', 'dep2'];
 ```
-Tell the injector about these objects using the `register()` function. The first argument is the 'token' by which we refer to this dependency. The second argument is the 'service provider' which is an object that teaches the injector how to create an object. In this case, the service provider is the constructor function. The third argument is a constant which gives additional information to the injector as to how to create a dependency. Injector.INSTANCE tells the injector to create a new instance of the object every time a client object asks for it. Other constants are described below in the API section.
+Tell the injector about these objects using the `register()` function. 
+The first argument is the 'token' by which we refer to this dependency. 
+The second argument is the 'service provider' which is an object that teaches the injector how to create a service. 
+In this case, the service provider is the constructor function. 
+The third argument is a constant which gives additional information to the injector as to how to create a service. 
+Injector.INSTANCE tells the injector to create a new instance of the service every time a client object asks for it. 
+Other constants are described below in the API section.
+
 ```
     injector.register('dep1', Dep1, Diogenes.INSTANCE );
     injector.register('dep2', Dep2, Diogenes.INSTANCE );
