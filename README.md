@@ -12,7 +12,7 @@ I have also created a small [demo app](https://richardinho.github.io/Diogenes) w
 
 
 #### Note on terminology
-In the context of dependency injection, an object taking the role of a dependency being injected into another object is known as a 'service'. The object receiving the service is known as the 'client'. Within the DI system objects take the role of both service and client according to whether they are being injected or being injected into.
+In the context of dependency injection, an object taking the role of a dependency being injected into another object is known as a 'service'. The object receiving the service is known as the 'client'. Within the DI system, objects take the role of both service and client according to whether they are being injected or being injected into.
 
 ### Installation
 Use npm to pull package down from NPM.
