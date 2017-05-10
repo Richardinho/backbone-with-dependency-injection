@@ -2,9 +2,7 @@
 
 A Dependency Injection library for Javascript.
 
-## Installation
-
+### Installation
 ```
     npm install --save Diogenes
-
 ```
