@@ -5,6 +5,8 @@ A Dependency Injection library for Javascript.
 ### introduction
 Dependency injection is a way of creating objects within a Javascript application that helps to make code cleaner, and facilitates testing by decoupling objects from the implementation of their dependencies.
 
+I have written more generally on the subject of [dependency injection](http://blog.richardhunter.co.uk/index.php/9) on my blog.
+
 ### Installation
 Use npm to pull package down from NPM.
 ```
