@@ -75,26 +75,6 @@ These are passed to the `register()` method to give instructions to the injector
 | `Diogenes.VALUE`            | Specifies that the injector should return the service provider on every request. The service provider can be any type of javascript function, object, or primitive. |
 
 
-
-
-#### Diogenes.INSTANCE
-
-Specifies that the injector should return a new instance of the service provider on every request.
-The service provider must be a constructor function.
-
-#### Diogenes.CACHE_INSTANCE
-
-Specifies that the injector should return the same instance of the service provider on every request.
-The service provider must be a constructor function.
-
-#### Diogenes.FACTORY_FUNCTION
-Specifies that the injector should return the result of calling the service provider on every request.
-The service provider must be a function.
-
-#### Diogenes.VALUE
-Specifies that the injector should return the service provider on every request
-The service provider can be any type of javascript function, object, or primitive.
-
 ### instance methods
 
 #### register(token, serviceProvider, mode, locals)
