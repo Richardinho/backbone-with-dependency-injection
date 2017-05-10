@@ -1,4 +1,4 @@
-# Diogenes
+# DIogenes
 
 A Dependency Injection library for Javascript.
 
@@ -81,4 +81,14 @@ The service provider must be a function.
 ##### Diogenes.VALUE
 Specifies that the injector should return the service provider on every request
 The service provider can be any type of javascript function, object, or primitive.
+
+#### instance methods
+
+##### register()
+
+##### has()
+
+##### get()
+
+##### start()
 
