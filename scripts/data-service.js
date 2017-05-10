@@ -18,7 +18,7 @@ define(function () {
 
 					this.title = 'My Dependency Injection prototype';
 					this.bar = 'bar bar bar bar bar baran..';
-					this.foo = 'Who is the bigger fool, the fool who leads or the fool who follows?'
+					this.foo = 'Who is the bigger foo, the foo who leads or the foo who follows?'
 
 					resolve({});
 
