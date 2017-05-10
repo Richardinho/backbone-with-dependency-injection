@@ -60,3 +60,25 @@ The last step is to bootstrap the DI system. This is done using the `start()` me
 ```
 ### API
 
+    #### constants
+    
+    These are passed to the `register()` method to give instructions to the injector as to how to create objects.
+    
+	Injector.INSTANCE
+	
+	Specifies that the injector should return a new instance of the service provider on every request.
+	The service provider must be a constructor function.
+	
+	Injector.CACHE_INSTANCE
+	
+	Specifies that the injector should return the same instance of the service provider on every request.
+	The service provider must be a constructor function.
+	
+	Injector.FACTORY_FUNCTION
+	Specifies that the injector should return the result of calling the service provider on every request.
+	The service provider must be a function.
+	
+	Injector.VALUE
+	Specifies that the injector should return the service provider on every request
+	The service provider can be any type of javascript function, object, or primitive.
+
