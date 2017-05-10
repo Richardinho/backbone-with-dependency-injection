@@ -77,15 +77,15 @@ These are passed to the `register()` method to give instructions to the injector
 
 ### instance methods
 
-#### register(token, serviceProvider, mode, locals)
+## register(token, serviceProvider, mode, locals)
 
-token: string identifier for the dependency
+register a service provider with the injector. Optionally provide arguments to be passed to service provider.
 
-serviceProvider: object that teaches injector how to create the instance. Varies depending on the mode (see constants above).
+- `token` - string identifier for the dependency
+- `serviceProvider` - object that teaches injector how to create the instance. Varies depending on the mode (see constants above)
+- `mode` - constant(see above) which provides additional info to the injector on how to create the dependency.
+- `locals` - additional optional arguments that can be passed to the service provider. When the service worker is called these locals will be the second argument passed.
 
-mode: constant(see above) which provides additional info to the injector on how to create the dependency.
-
-locals: additional optional arguments that can be passed to the service provider. When the service worker is called these locals will be the second argument passed.
 
 #### has(token)
 returns true if provider identified by token has been registered with the injector.
