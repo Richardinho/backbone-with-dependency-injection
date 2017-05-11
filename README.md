@@ -65,7 +65,7 @@ An object declares its dependencies using annotations. In DI systems, annotation
     Foo.inject = ['dep1', 'dep2'];
 ```
 
-Note also that property on the options object by which we access a service is also derived from the service token. For this reason, tokens should not contain characters that are illegal in Javascript properties.
+Note also that property on the options object by which we access a service is also derived from the service token. For this reason, tokens should not contain characters that are illegal within Javascript properties.
 
 The last step is to bootstrap the DI system. This is done using the `start()` method. The first argument to `start()` is a service token representing the object at the root of our dependency tree. The DI system will instantiate this object and all of its dependencies, and, by recursion, all the objects that make up the dependency tree. The second argument is a call back which is called once this process is completed. It is passed the aforementioned root object.
 
@@ -93,11 +93,11 @@ These are passed to the `register()` method to give instructions to the injector
 
 ## register(token, serviceProvider, mode, locals)
 
-register a service provider with the injector. Optionally provide arguments to be passed to service provider.
+Register a service with the injector. Optionally provide arguments to be passed to service provider.
 
 - `token` - string identifier for this service
 - `serviceProvider` - object that teaches injector how to create the instance. Varies depending on the mode (see constants above)
-- `mode` - constant(see above) which provides additional info to the injector on how to create the dependency.
+- `mode` - constant(see above) which provides additional info to the injector on how to create the dependency
 - `locals` - additional optional arguments that can be passed to the service provider. When the service worker is called these locals will be the second argument passed.
 
 
