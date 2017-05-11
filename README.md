@@ -93,7 +93,7 @@ These are passed to the `register()` method to give instructions to the injector
 
 ## register(token, serviceProvider, mode, locals)
 
-Register a service with the injector. Optionally provide arguments to be passed to service provider.
+Register a service with the injector. Optionally provide arguments to be passed to the service provider.
 
 - `token` - string identifier for this service
 - `serviceProvider` - object that teaches injector how to create the instance. Varies depending on the mode (see constants above)
@@ -103,13 +103,13 @@ Register a service with the injector. Optionally provide arguments to be passed 
 
 ## has(token)
 
-returns true if service has been registered on the injector
+Returns true if service has been registered on the injector
 
 - `token` - string identifier for this service
     
 ## get(token)
 
-returns service identified by token
+Returns service identified by token
 
 - `token` - string identifier for this service
     
