@@ -2,9 +2,9 @@
 
 A Dependency Injection library for Javascript.
 
-### introduction
+### Introduction
 Dependency injection is a way of creating objects within a Javascript application.
- its advantages are that it helps to reduce object creation code boilerplate, making clode cleaner, and facilitates testing by decoupling objects from their implementation.
+ Its advantages are that it helps to reduce object creation code boilerplate, making clode cleaner, and it facilitates testing by decoupling objects from their implementation.
 
 I have written more generally on the subject of [dependency injection](http://blog.richardhunter.co.uk/index.php/9) on my blog.
 
@@ -78,7 +78,7 @@ The last step is to bootstrap the DI system. This is done using the `start()` me
 
 ## API
 
-### constants
+### Constants
 These are passed to the `register()` method to give instructions to the injector as to how to create services.
 
 | Name                        | Purpose                                         |
@@ -89,7 +89,7 @@ These are passed to the `register()` method to give instructions to the injector
 | `Diogenes.VALUE`            | Specifies that the injector should return the service provider on every request. The service provider can be any type of javascript function, object, or primitive. |
 ---
 
-### instance methods
+### Instance methods
 
 ## register(token, serviceProvider, mode, locals)
 
