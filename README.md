@@ -103,13 +103,13 @@ Register a service with the injector. Optionally provide arguments to be passed 
 
 ## has(token)
 
-Returns true if service has been registered on the injector
+Returns true if service has been registered on the injector.
 
 - `token` - string identifier for this service
     
 ## get(token)
 
-Returns service identified by token
+Returns service identified by token.
 
 - `token` - string identifier for this service
     
