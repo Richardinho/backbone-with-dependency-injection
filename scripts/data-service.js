@@ -2,7 +2,6 @@ define(function () {
 
 	'use strict';
 
-
 	var DataService = function () {
 		this.title = '';
 		this.bar = 'This is bar blah blah';
@@ -26,11 +25,7 @@ define(function () {
 				}, 0);
 			});
 		}
-
-
 	};
 
 	return DataService;
-
-
 });

@@ -20,6 +20,15 @@ Use npm to pull package down from NPM.
     npm install --save Diogenes
 ```
 
+#### CDN
+The library can be downloaded from the following CDN:
+```
+https://unpkg.com/Diogenes@1.4.9/lib/injector.js
+```
+
+### Demo
+Here is a [JSFiddle](https://jsfiddle.net/Richardinho/v1dyj6m7/) which shows a very simple working example.
+
 ### Tutorial
 
 Begin by importing the constructor function and using that to create an instance of the injector.

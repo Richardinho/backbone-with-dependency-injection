@@ -3,7 +3,6 @@ define(function () {
 	'use strict';
 
 	var PageManager = function () {
-
 		this.rootEl = document.getElementById('app');
 	};
 
@@ -13,11 +12,8 @@ define(function () {
 
 			this.rootEl.innerHTML = '';
 			this.rootEl.appendChild(view.el);
-
 		}
-
 	};
 
 	return PageManager;
-
 });

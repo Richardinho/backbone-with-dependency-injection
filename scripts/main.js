@@ -6,12 +6,8 @@ requirejs.config({
 		'jquery' : 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min',
 		'injector' : '../lib/injector'
 	}
-
 });
 
-
 require(['bootstrap'], function (bootstrap) {
-
 	bootstrap();
-
 });
