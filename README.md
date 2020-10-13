@@ -1,6 +1,6 @@
-# DIogenes
+# Diogenes
 
-A Dependency Injection library for Javascript.
+A small Dependency Injection library for Javascript.
 
 ### Introduction
 Dependency injection is a way of creating objects within a Javascript application.
@@ -28,6 +28,8 @@ https://unpkg.com/Diogenes@1.4.9/lib/injector.js
 
 ### Demo
 Here is a [JSFiddle](https://jsfiddle.net/Richardinho/v1dyj6m7/) which shows a very simple working example.
+
+[demo app with old school constructors, Backbone, and RequireJS](https://richardinho.github.io/di-test-1/#bar)
 
 ### Tutorial
 
